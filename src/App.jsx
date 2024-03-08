@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 
 function App() {
   const [imageData, setImageData] = useState([]);
@@ -40,18 +41,26 @@ function App() {
   console.log(imageData);
   return (
     <>
-      <div className="flex items-center justify-center mx-auto ">
-        <div className="flex flex-wrap items-center gap-4 w-[80%]">
-          {imageData?.length > 0 &&
-            imageData.map((item) => (
-              <div key={item.id} className="border p-4 rounded-lg shadow-md">
-                <img
-                  src="https://images.unsplash.com/photo-1709136485727-b4407111e90a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMzF8fHxlbnwwfHx8fHw%3D"
-                  className="w-40 object-cover "
-                />
-              </div>
-            ))}
+      <div className="py-10">
+        <h1 className="font-semibold text-2xl mb-8 text-center">
+          Image Gallery
+        </h1>
+        <div className="flex items-center justify-center mx-auto   ">
+          <div className="flex flex-wrap justify-center items-center gap-4 w-[90%]">
+            {imageData?.length > 0 &&
+              imageData.map((item) => (
+                <div key={item.id} className="border p-4 rounded-lg shadow-md ">
+                  <img
+                    src="https://images.unsplash.com/photo-1709136485727-b4407111e90a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMzF8fHxlbnwwfHx8fHw%3D"
+                    className=" w-64 lg:w-40 object-cover "
+                  />
+                </div>
+              ))}
+          </div>
         </div>
+        {!isLoading && (
+          <FaSpinner className="animate-spin text-2xl mx-auto  text-black mt-8" />
+        )}
       </div>
     </>
   );
