@@ -8,9 +8,7 @@ function App() {
   async function getImageData() {
     try {
       const response = await fetch(
-        "https://jsonplaceholder.typicode.com/comments" +
-          "?_limit=10 &_page=" +
-          page
+        `https://picsum.photos/v2/list?page=${page}&limit=10`
       );
       const jsonData = await response.json();
       setImageData((prev) => [...prev, ...jsonData]);
@@ -51,8 +49,8 @@ function App() {
               imageData.map((item) => (
                 <div key={item.id} className="border p-4 rounded-lg shadow-md ">
                   <img
-                    src="https://images.unsplash.com/photo-1709136485727-b4407111e90a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMzF8fHxlbnwwfHx8fHw%3D"
-                    className=" w-64 lg:w-40 object-cover "
+                    src={item?.download_url}
+                    className=" w-64 lg:min-w-[300px] h-96  object-cover "
                   />
                 </div>
               ))}
