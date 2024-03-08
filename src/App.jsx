@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
+import { CiImageOn } from "react-icons/ci";
 
 function App() {
   const [imageData, setImageData] = useState([]);
@@ -39,8 +40,9 @@ function App() {
   console.log(imageData);
   return (
     <>
-      <div className="py-10">
-        <h1 className="font-semibold text-2xl mb-8 text-center">
+      <div className=" py-4 lg:py-8">
+        <h1 className="font-semibold text-2xl mb-4 flex justify-center items-center gap-2">
+          <CiImageOn className="text-5xl" />
           Image Gallery
         </h1>
         <div className="flex items-center justify-center mx-auto   ">
@@ -50,7 +52,8 @@ function App() {
                 <div key={item.id} className="border p-4 rounded-lg shadow-md ">
                   <img
                     src={item?.download_url}
-                    className=" w-64 lg:min-w-[300px] h-96  object-cover "
+                    className=" w-64 h-80 lg:min-w-[300px] lg:h-96  object-cover "
+                    loading="lazy"
                   />
                 </div>
               ))}
